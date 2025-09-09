@@ -86,7 +86,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto transition-colors duration-500"
+          className="text-xl mt-4 sm:mt-0 sm:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto transition-colors duration-500"
         >
           Crafting modern, responsive, and scalable web solutions that drive
           business growth
