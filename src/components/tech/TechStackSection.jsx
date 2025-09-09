@@ -85,11 +85,20 @@ export default function TechStackSection() {
             transform: translateX(-50%);
           }
         }
+
         .animate-scroll-left {
           animation: scroll-left 40s linear infinite;
         }
+
         .pause {
           animation-play-state: paused;
+        }
+
+        /* Faster animation on mobile (max-width: 640px) */
+        @media (max-width: 640px) {
+          .animate-scroll-left {
+            animation-duration: 5s; /* twice as fast */
+          }
         }
       `}</style>
     </section>

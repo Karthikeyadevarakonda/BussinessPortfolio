@@ -135,8 +135,16 @@ export default function AboutSection() {
             transform: translateX(-50%);
           }
         }
+
         .animate-marquee {
           animation: marquee 30s linear infinite;
+        }
+
+        /* Faster on mobile (max-width: 640px) */
+        @media (max-width: 640px) {
+          .animate-marquee {
+            animation-duration: 5s; /* moves twice as fast */
+          }
         }
       `}</style>
     </section>
