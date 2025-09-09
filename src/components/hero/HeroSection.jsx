@@ -26,7 +26,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/50 via-white to-sky-50/50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 transition-colors duration-500">
+    <div className="relative min-h-screen  flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/50 via-white to-sky-50/50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 transition-colors duration-500">
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
@@ -65,7 +65,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-8"
+          className="-mt-20 sm:mt-0 mb-8"
         >
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors duration-500">
             {text}
@@ -115,8 +115,6 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
           />
         </motion.button>
-
-        {/* Scroll Indicator placeholder */}
       </div>
     </div>
   );
