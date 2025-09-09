@@ -59,7 +59,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         {/* Main Heading with Typewriter Effect */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -67,7 +67,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors duration-500">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors duration-500">
             {text}
             {isTyping && (
               <motion.span
@@ -116,7 +116,7 @@ export default function HeroSection() {
           />
         </motion.button>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator placeholder */}
       </div>
     </div>
   );
