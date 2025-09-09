@@ -92,14 +92,15 @@ export default function AboutSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto p-1 rounded-full bg-gradient-to-br from-blue-400 via-sky-400 to-indigo-400 dark:from-blue-500 dark:via-sky-500 dark:to-indigo-500"
+            whileHover={{ rotateY: 10, rotateX: 5, scale: 1.05 }}
           >
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-blue-400 via-sky-400 to-indigo-400 dark:from-blue-500 dark:via-sky-500 dark:to-indigo-500 p-1 transition-all duration-500">
-                <div className="w-full h-full bg-blue-50 dark:bg-slate-800 rounded-full flex items-center justify-center transition-colors duration-500">
-                  <div className="text-8xl">👨‍💻</div>
-                </div>
-              </div>
+            <div className="w-full h-full rounded-full overflow-hidden bg-blue-50 dark:bg-slate-800 flex items-center justify-center">
+              <img
+                src="https://cf-st.sc-cdn.net/3d/render/33892300-104661184086_4-s5-v1.webp?ua=2"
+                alt="3D Bitmoji for karthikeya86888"
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
         </div>

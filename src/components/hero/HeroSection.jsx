@@ -67,7 +67,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors duration-500">
+          <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors duration-500">
             {text}
             {isTyping && (
               <motion.span
