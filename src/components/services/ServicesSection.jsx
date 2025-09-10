@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Globe, Code, Palette, Database, Cloud, Zap } from "lucide-react";
 
 const services = [
@@ -52,6 +51,20 @@ export default function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  // --- Tilt effect handler ---
+  const handleMouseMove = (e, cardRef) => {
+    const { left, top, width, height } = cardRef.getBoundingClientRect();
+    const x = (e.clientX - left) / width;
+    const y = (e.clientY - top) / height;
+    const rotateX = (y - 0.5) * 15;
+    const rotateY = (x - 0.5) * -15;
+    cardRef.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  };
+
+  const resetTilt = (cardRef) => {
+    cardRef.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+  };
+
   return (
     <section
       id="services"
@@ -65,10 +78,10 @@ export default function ServicesSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6 transition-colors duration-500">
+          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             What I Offer
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto transition-colors duration-500">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Comprehensive web development services to elevate your business
             online.
           </p>
@@ -84,19 +97,31 @@ export default function ServicesSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group"
             >
-              <div className="relative bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200/50 dark:border-slate-700/50 h-full hover:-translate-y-2">
+              <div
+                ref={(el) => {
+                  if (!el) return;
+                  el.onmousemove = (e) => handleMouseMove(e, el);
+                  el.onmouseleave = () => resetTilt(el);
+                }}
+                className="relative bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/50 dark:border-slate-700/50 h-full transition-transform duration-300 transform-gpu"
+              >
+                {/* Glow Effect */}
+                <div
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-20 blur-2xl group-hover:opacity-40 transition duration-500`}
+                ></div>
+
                 <div className="relative z-10">
                   <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-md`}
+                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}
                   >
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4">
                     {service.title}
                   </h3>
 
-                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed transition-colors duration-300">
+                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                     {service.description}
                   </p>
                 </div>

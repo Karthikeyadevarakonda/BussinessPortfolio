@@ -92,16 +92,51 @@ export default function AboutSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto p-1 rounded-full bg-gradient-to-br from-blue-400 via-sky-400 to-indigo-400 dark:from-blue-500 dark:via-sky-500 dark:to-indigo-500"
             whileHover={{ rotateY: 10, rotateX: 5, scale: 1.05 }}
+            className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto p-1 rounded-full"
           >
-            <div className="w-full h-full rounded-full overflow-hidden bg-blue-50 dark:bg-slate-800 flex items-center justify-center">
+            {/* Glowing rotating border with breathing & color-shifting neon effect */}
+            <div
+              className="absolute inset-0 rounded-full p-[3px]"
+              style={{
+                animation:
+                  "spin 12s linear infinite, breathe 3s ease-in-out infinite, hueShift 6s linear infinite",
+                background:
+                  "conic-gradient(from 0deg, #3b82f6, #38bdf8, #6366f1, #3b82f6)",
+                filter: "blur(4px) brightness(1.5)",
+              }}
+            />
+
+            {/* Inner circle with image */}
+            <div className="w-full h-full rounded-full overflow-hidden bg-blue-50 dark:bg-slate-800 flex items-center justify-center relative z-10 shadow-lg">
               <img
                 src="https://cf-st.sc-cdn.net/3d/render/33892300-104661184086_4-s5-v1.webp?ua=2"
                 alt="3D Bitmoji for karthikeya86888"
                 className="w-full h-full object-cover"
               />
             </div>
+
+            {/* Add keyframes */}
+            <style>{`
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes breathe {
+      0%, 100% {
+        opacity: 0.7;
+        filter: blur(3px) brightness(1.2);
+      }
+      50% {
+        opacity: 1;
+        filter: blur(6px) brightness(1.8);
+      }
+    }
+    @keyframes hueShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+  `}</style>
           </motion.div>
         </div>
 
